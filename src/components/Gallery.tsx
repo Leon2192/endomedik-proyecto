@@ -5,35 +5,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
+import {
+  especialidades,
+  ImagesEspecialidades,
+  ImagesSlider,
+  sliderTexts,
+} from "@/constants";
 
 const Gallery = () => {
-  const Images = [
-    "/images/1.png",
-    "/images/2.jpg",
-    "/images/5.webp",
-    "/images/6.jpg",
-    "/images/10.avif",
-    "/images/12.avif",
-  ];
-
-  const sliderTexts = [
-    "TECNOLOGIA DE PUNTA PARA CADA PROCEDIIENTO",
-    "OFRECEMOS ATENCION PERSONALIZADA Y DE CALIDAD",
-    "CONOCE NUESTRAS ESPECIALIDADES",
-    "SOMOS ESPECIALISTAS EN MEDICINA AVANZADA",
-    "NOS REPRESENTA LA CONFIANZA Y COMPROMISO",
-    "RESPETO A LAS PERSONAS Y TRABAJO EN EQUIPO",
-  ];
-
-  const especialidades = [
-    "Gastroenterologia",
-    "Hernioplastia",
-    "Mucosectomia",
-    "CPRE",
-    "Ecoendoscopia guiada",
-    "Bronquial",
-  ];
-
   return (
     <div>
       <section id="Gallery" className="py-12">
@@ -51,7 +30,7 @@ const Gallery = () => {
             }}
             className="w-full"
           >
-            {Images.map((src, index) => (
+            {ImagesSlider.map((src, index) => (
               <SwiperSlide key={index}>
                 <div className="relative overflow-hidden shadow-lg">
                   {/* Fondo oscuro encima de la imagen */}
@@ -78,18 +57,20 @@ const Gallery = () => {
           Especialidades
         </h2>
 
-        <div className="container mx-auto grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {Images.map((src, index) => (
+        <div className="container mx-auto grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-2">
+          {ImagesEspecialidades.map((src, index) => (
             <div key={index} className="relative group">
-              <div className="overflow-hidden rounded-lg shadow-lg group-hover:bg-opacity-75 transition duration-300 cursor-pointer">
+              <div className="overflow-hidden rounded-lg shadow-lg cursor-pointer relative">
+                {/* Imagen */}
                 <img
                   src={src}
                   alt={`Slides ${index + 1}`}
                   className="w-full h-24 object-cover transition-transform duration-300 group-hover:opacity-75 group-hover:scale-105"
                   style={{ height: "400px" }}
                 />
-                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-opacity duration-300 text-white text-xl font-bold">
-                  <p>{especialidades[index]}</p>
+                {/* Oscurecimiento del fondo */}
+                <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 group-hover:bg-opacity-60 transition-opacity duration-300 text-white text-xl font-bold">
+                  <p className="text-3xl">{especialidades[index]}</p>
                 </div>
               </div>
             </div>
